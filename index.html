@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Our Little Scrapbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Patrick+Hand&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="spicy.css">
+</head>
+<body>
+
+<div class="grain"></div>
+
+<!-- 01 CALENDAR -->
+<section class="scene calendar-scene">
+  <div class="paper-top"></div>
+  <div class="calendar-sheet">
+    <div class="binder">
+      <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+    </div>
+    <div class="month">HAPPY BIRTHDAY NOURY</div>
+    <div class="calendar-title"><br>happy birthday!</br></div>
+    <div class="calendar-grid">
+      <span>SUN</span><span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span>
+      <b></b><b></b><b></b><b class="marked" >1</b><b>2</b><b>3</b><b>4</b>
+      <b>5</b><b>6</b><b>7</b><b >8</b><b>9</b><b>10</b><b>11</b>
+      <b>12</b><b>13</b><b>14</b><b>15</b><b>16</b><b>17</b><b>18</b>
+    </div>
+    <div class="tiny-photo"><img src="yellow.jpeg" alt="Your Photo"></div>
+    <div class="scribble">Finally!</div>
+  </div>
+  <div class="pin">●</div>
+  <button class="next" data-target="1">turn the page ↓</button>
+</section>
+
+<!-- 02 CAKE -->
+<section class="scene cake-scene">
+  <p class="before">Before we continue,</p>
+  <h1>make a wish...</h1>
+  <div class="cake">
+    <div class="flame">✦</div>
+    <div class="candle"></div>
+    <div class="cake-top"></div>
+    <div class="cake-body"></div>
+    <div class="cake-base"></div>
+  </div>
+  <div class="cake-note">a tiny birthday<br>moment for us ♡</div>
+  <button class="next" data-target="2">make the wish ↓</button>
+</section>
+
+<!-- 03 BIRTHDAY -->
+<section class="scene birthday-scene">
+  <div class="confetti">✦　•　✧　•　✦　•　✧</div>
+  <p class="birthday-small">HAPPY BIRTHDAY, NOURY!</p>
+  <div class="birthday-row">
+    <div class="disc">♫</div>
+    <div class="number">20</div>
+    <div class="star-photo"><img src="WhatsApp Image 2026-09-30 at 12.44.39 AM.jpeg" alt="Your Photo"></div>
+      <div class="photo"></div>
+    </div>
+    <div class="camera">▣</div>
+  </div>
+  <p class="under-title">another year of memories together.</p>
+  <button class="next" data-target="3">keep going ↓</button>
+</section>
+
+<!-- 04 FOUR CARDS -->
+<!-- 04 FOUR CARDS -->
+<section class="scene cards-scene">
+
+    <p class="eyebrow">our little collection</p>
+
+    <h2>Four things that remind me of you.</h2>
+
+    <div class="four-cards">
+
+        <!-- CAT -->
+        <article class="memory-card" onclick="openMemory('cat')">
+            <div class="card-icon">🐱</div>
+            <b>SUSHI</b>
+            <span>your little baby</span>
+        </article>
+
+        <!-- MUSIC -->
+        <article class="memory-card" onclick="openMemory('music')">
+            <div class="card-icon">♫</div>
+            <b>MUSIC</b>
+            <span> song remind me of you</span>
+        </article>
+
+        <!-- Food -->
+        <article class="memory-card" onclick="openMemory('food')">
+            <div class="card-icon">✿</div>
+            <b>FAV FOOD</b>
+            <span>something SPICY</span>
+        </article>
+
+        <!-- PHOTOS -->
+        <article class="memory-card" onclick="openMemory('photos')">
+            <div class="card-icon">▣</div>
+            <b>PHOTOS</b>
+            <span>our memories</span>
+        </article>
+
+    </div>
+
+    <button class="next" data-target="4">
+        open the next page ↓
+    </button>
+
+</section>
+
+
+<!-- POPUP -->
+<div id="memoryPopup" class="memory-popup">
+
+    <div class="popup-box">
+
+        <button class="close-popup" onclick="closeMemory()">×</button>
+
+        <!-- CAT -->
+        <div id="catContent" class="popup-content">
+            <h2> sushi </h2>
+
+            <img src="sushi.jpeg" alt=" koty koyt pspsps" class="popup-image">
+
+            <p>
+                كوتي موتي بسبسبس ♡
+            </p>
+        </div>
+
+
+        <!-- MUSIC --> 
+         <div id="musicContent" class="popup-content">
+
+            <h2> song remind me of you </h2>
+
+            <img src="nancy.jpeg" alt="Nancy Ajram" class="popup-image">
+
+            <p>
+                Nancy Ajram - Mogabah ♡
+            </p>
+       <iframe
+    width="70%"
+    height="200"
+    src="https://www.youtube.com/embed/dDNMNF2KrYM"
+    title="Nancy Ajram - Mogabah"
+    frameborder="0"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+</iframe>
+ <p>حد يقووووله</p>
+         </div>
+        <!-- Food -->
+        <div id="foodContent" class="popup-content">
+
+            <h2> we are always hungry ✿</h2>
+
+            <img src="food.jpeg" class="popup-image">
+
+            <p>
+                Something as spicy as her ♡
+            </p>
+
+        </div>
+
+
+        <!-- PHOTOS -->
+        <div id="photosContent" class="popup-content">
+
+            <h2>Us ♡</h2>
+
+            <img src="soa.jpeg" class="popup-photo">
+
+            <p>
+                One of my favorite memories.
+            </p>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- 05 FLOWER -->
+<!-- 05 OUR SHARED THINGS -->
+<section class="scene shared-scene">
+
+    <div class="shared-title">
+        <span>the things we both love</span>
+        <h2>our little things</h2>
+        <p>the random things that somehow became ours</p>
+    </div>
+
+    <div class="shared-grid">
+
+        <div class="shared-item">
+            <div class="shared-icon">🔎</div>
+            <h3>Crime Documentaries</h3>
+            <p>because apparently we enjoy solving crimes from our couch.</p>
+        </div>
+
+        <div class="shared-item">
+            <div class="shared-icon">🎵</div>
+            <h3>Michael Jackson</h3>
+            <p>one playlist, two people, way too much dancing.</p>
+        </div>
+
+        <div class="shared-item">
+            <div class="shared-icon">🍗</div>
+            <h3>Food</h3>
+            <p>fried chicken, snacks and basically anything that tastes good.</p>
+        </div>
+
+        <div class="shared-item">
+            <div class="shared-icon">🐈</div>
+            <h3>Cats</h3>
+            <p>we see a cat and suddenly nothing else matters.</p>
+        </div>
+
+        <div class="shared-item">
+            <div class="shared-icon">🎬</div>
+            <h3>Horror Movies</h3>
+            <p>watching scary movies and pretending we are not scared.</p>
+        </div>
+
+        <div class="shared-item">
+            <div class="shared-icon"></div>
+            <h3>physical therapy</h3>
+            <p> Ana dahry bewga3ny ya emad!!</p>
+            <div class="shared-item">🩺
+    <div class="shared-icon">🩺</div>
+    <h3>Physical Therapy</h3>
+    <p>الحاجة الوحيدة المشتركة في الموضوع ده اني انا المريضة وانتي الدكتورة</p>
+</div>
+        </div>
+
+    </div>
+
+    <div class="side-word shared-left">same brain</div>
+    <div class="side-word right shared-right">same chaos</div>
+
+    <button class="next" data-target="6">
+        one last memory ↓
+    </button>
+
+</section>
+
+<!-- 06 LETTER -->
+<section class="scene letter-scene">
+  <p class="eyebrow">a letter for my favorite doctor</p>
+  <div class="envelope-wrap">
+    <div class="envelope">
+      <div class="letter">
+        <h2></h2> Nour...My Dear Bestie,</h2>
+        <p>Happy Birthday ♡</p>
+        <p>
+          اتمنالك سنة سعيدة وجميلة زيك طبعا مش محتاجة اعرفك انتي عندي ايه you already know that. وكمان لازم تعرفي ان حتى لو بعدين حصل اي حاجة انا عمري ما هندم ابدا اني عرفتك 
+          happy birthday and i wish you all your wishes  و النجاح اللي تستحقيه يا احسن دكتورة فالدنيا وان شاء الله ربنا يكرمك تتجوزي عشان انا زهقت 
+        كل سنة ةانتي طيبة يا بيبي ولكي جميع قبلاتي بس مش عارفة احط ايموجيز على اللاب اعتبريني حطيت البوسة 
+      .......HAPPY BIRTHDAY     </p>
+      <img src="doctor.jpeg" alt="Your Photo" class="letter-photo">
+        <p>
+          Thank you for every laugh, every random conversation,
+          and every memory we've made together.
+        </p>
+        <p class="sign"> Bamot Feeky kda kda ,<br> Jydaa  ♡</p>
+      </div>
+    </div>
+  </div>
+  <button class="next restart" data-target="0">↺ read it again</button>
+</section>
+
+<script src="spicy.javascritp.js"></script>
+</body>
+</html>

@@ -1,0 +1,556 @@
+*{box-sizing:border-box;margin:0;padding:0}
+:root{--blue:#d8e7f1;--blue2:#b9cfdf;--dark:#244765;--ink:#31485d;--white:#fffefa}
+html{scroll-behavior:smooth}
+body{font-family:Poppins,sans-serif;color:var(--ink);background:var(--blue);overflow-x:hidden}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:20;opacity:.06;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+.scene{height:100vh;min-height:650px;position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center;text-align:center;background-color:var(--blue);background-image:linear-gradient(90deg,rgba(255,255,255,.42) 50%,transparent 50%),linear-gradient(rgba(255,255,255,.42) 50%,transparent 50%);background-size:42px 42px}
+button.next{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);border:0;background:var(--dark);color:#fff;padding:13px 24px;border-radius:30px;font:500 13px Poppins;cursor:pointer;box-shadow:0 6px 0 rgba(36,71,101,.16);z-index:8}
+button.next:hover{transform:translateX(-50%) translateY(-4px)}
+.paper-top{position:absolute;top:0;left:0;right:0;height:58px;background:rgba(255,255,255,.65);border-bottom:2px solid rgba(36,71,101,.15)}
+.calendar-sheet{position:relative;width:min(700px,82vw);height:72vh;min-height:500px;background:#fffefa;padding:65px 55px 35px;box-shadow:10px 16px 30px rgba(36,71,101,.12);transform:rotate(-.7deg);animation:drop .9s both}
+.binder{position:absolute;top:-17px;left:35px;right:35px;display:flex;justify-content:space-around}
+.binder i{width:40px;height:48px;background:#f8f8f5;border-radius:0 0 20px 20px;box-shadow:0 3px 2px #b8cbd8}
+.month{font-size:13px;letter-spacing:.25em;color:var(--dark);text-align:left}
+.calendar-title{font:44px "DM Serif Display";text-align:left;color:var(--dark);margin:8px 0 18px}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;text-align:center;font-size:12px}
+.calendar-grid span{font-size:9px;letter-spacing:.1em;color:#70889c;padding-bottom:8px}
+.calendar-grid b{font-weight:400;padding:9px;border:1px solid #dce4e9}
+.calendar-grid .marked{background:#c3d9e8;border:2px solid var(--dark);border-radius:50%}
+.tiny-photo{position:absolute;right:11%;top:43%;width:100px;height:105px;background:#c6dbea;display:grid;place-items:center;font-size:9px;letter-spacing:.15em;transform:rotate(8deg);box-shadow:4px 7px 12px #9bb2c2}
+.scribble{position:absolute;right:4%;top:27%;font:24px "Patrick Hand";transform:rotate(10deg)}
+.pin{position:absolute;top:13%;right:10%;color:#f2c451;font-size:38px;animation:bob 2s infinite}
+
+.cake-scene{flex-direction:column}
+.before{font:26px "DM Serif Display";margin-bottom:10px;color:var(--dark)}
+.cake-scene h1{font:55px "DM Serif Display";font-weight:400;color:var(--dark)}
+.cake{position:relative;width:330px;height:290px;margin-top:35px;animation:float 3s ease-in-out infinite}
+.cake-top{position:absolute;width:290px;height:90px;border:4px solid var(--dark);border-radius:50%;background:#f9f8f2;left:20px;top:85px}
+.cake-body{position:absolute;width:290px;height:105px;left:20px;top:120px;background:#f9f8f2;border:4px solid var(--dark);border-top:0;border-radius:0 0 35px 35px}
+.cake-base{position:absolute;width:315px;height:25px;left:8px;top:215px;background:#d3e3ed;border:4px solid var(--dark);border-radius:50%}
+.candle{position:absolute;width:7px;height:58px;background:#fff;top:35px;left:162px;border:2px solid var(--dark);z-index:2}
+.flame{position:absolute;top:8px;left:153px;font-size:35px;color:#e8b33d;z-index:3}
+.cake-note{position:absolute;right:9%;bottom:22%;font:23px "Patrick Hand";transform:rotate(-5deg)}
+
+.birthday-scene{flex-direction:column}
+.birthday-small{font:25px "Patrick Hand";color:#2b6491;font-weight:bold;margin-bottom:18px}
+.birthday-row{display:flex;align-items:center;gap:20px}
+.disc{width:115px;height:115px;border-radius:50%;background:repeating-radial-gradient(circle,#1e2730 0 7px,#59636b 8px 10px);color:#fff;display:grid;place-items:center;font-size:35px;animation:spin 9s linear infinite}
+.number{font:140px "DM Serif Display";color:#f7f7f2;text-shadow:3px 3px 0 #8fa8ba,-2px -2px 0 #8fa8ba;line-height:.8}
+.star-photo{width:230px;height:210px;clip-path:polygon(50% 0,61% 35%,98% 35%,68% 56%,79% 94%,50% 71%,20% 94%,31% 56%,2% 35%,39% 35%);background:#fff;border:5px solid #2b5980;padding:20px}
+.star-photo .photo{width:100%;height:100%;display:grid;place-items:center;background:#bcd6e7;font-size:10px;letter-spacing:.15em}
+.camera{font-size:75px;color:#315d7c;transform:rotate(8deg)}
+.under-title{font:22px "Patrick Hand";margin-top:25px}
+
+.cards-scene{flex-direction:column}
+.eyebrow{font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:#58728a;margin-bottom:10px}
+.cards-scene h2{font:42px "DM Serif Display";font-weight:400;color:var(--dark)}
+.four-cards{display:grid;grid-template-columns:repeat(2,190px);gap:14px;margin-top:35px}
+.four-cards article{height:175px;background:#aec8da;border:5px solid #e8f1f5;box-shadow:0 4px 10px rgba(30,65,90,.13);display:flex;flex-direction:column;align-items:center;justify-content:center;transition:.3s}
+.four-cards article:hover{transform:translateY(-10px) rotate(2deg)}
+.card-icon{font-size:45px;color:#fff;margin-bottom:5px}
+.four-cards b{font:18px "DM Serif Display";color:var(--dark)}
+.four-cards span{font:10px Poppins;color:#fff}
+
+.flower-scene{flex-direction:column}
+.flower-card{width:300px;min-height:420px;background:#f8f9f6;border:2px dashed #49677e;padding:28px 22px;box-shadow:7px 10px 18px rgba(36,71,101,.13);transform:rotate(-1deg);animation:float 4s ease-in-out infinite}
+.flower-card span{font:20px "Patrick Hand";display:block}
+.bouquet{font-size:65px;line-height:.9;color:#47779a;margin:55px 0}
+.flower-card small{font:14px "Patrick Hand"}
+.side-word{position:absolute;left:12%;top:37%;font:26px "Patrick Hand";transform:rotate(-15deg)}
+.side-word.right{left:auto;right:12%;transform:rotate(12deg)}
+.floating-leaf{position:absolute;font-size:75px;color:#9db9cb;opacity:.7;animation:leaf 4s infinite}
+.l1{left:12%;top:18%;transform:rotate(20deg)}
+.l2{right:9%;bottom:20%;transform:rotate(-25deg)}
+
+.letter-scene{flex-direction:column}
+.envelope-wrap{margin-top:25px}
+.envelope{width:min(610px,82vw);height:390px;background:#aec9dc;position:relative;box-shadow:0 12px 25px rgba(36,71,101,.16);clip-path:polygon(0 0,100% 0,100% 100%,0 100%,0 0)}
+.envelope:after{content:"";position:absolute;left:0;right:0;top:0;border-left:305px solid transparent;border-right:305px solid transparent;border-top:185px solid #d4e3ed;z-index:1}
+.letter{position:absolute;background:#fffdf7;width:75%;min-height:290px;left:12.5%;top:35px;padding:30px;text-align:left;z-index:0;transition:.9s cubic-bezier(.2,.8,.2,1);box-shadow:0 3px 12px rgba(0,0,0,.1)}
+.envelope:hover .letter{transform:translateY(-170px)}
+.letter h2{font:26px "Patrick Hand";color:#315b79;margin-bottom:8px}
+.letter p{font:13px "Patrick Hand";line-height:1.5;margin-bottom:10px}
+.letter .sign{text-align:right;margin-top:15px;color:#315b79}
+.restart{bottom:20px!important}
+
+@keyframes drop{from{opacity:0;transform:translateY(-70px) rotate(-5deg)}to{opacity:1;transform:translateY(0) rotate(-.7deg)}}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-13px)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(10px)}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes leaf{0%,100%{transform:translateY(0) rotate(10deg)}50%{transform:translateY(-20px) rotate(-8deg)}}
+
+@media(max-width:650px){
+.scene{min-height:100svh}
+.calendar-sheet{width:88vw;height:70vh;padding:55px 25px 25px}
+.calendar-title{font-size:35px}
+.scribble{right:2%;font-size:18px}
+.tiny-photo{width:70px;height:75px;right:6%}
+.before{font-size:20px}.cake-scene h1{font-size:42px}.cake{transform:scale(.75)}
+.birthday-row{gap:7px}.disc{width:65px;height:65px;font-size:20px}.number{font-size:82px}.star-photo{width:145px;height:140px}.camera{font-size:45px}
+.cards-scene h2{font-size:32px;max-width:90%}.four-cards{grid-template-columns:repeat(2,145px)}.four-cards article{height:150px}
+.flower-card{width:245px;min-height:360px}.side-word{font-size:20px;left:5%}.side-word.right{right:5%}
+.envelope{height:350px}.letter{min-height:250px;padding:22px}.letter p{font-size:11px}.envelope:after{border-left-width:41vw;border-right-width:41vw}
+}
+/* ============================= */
+/* OUR SHARED THINGS SECTION */
+/* ============================= */
+
+.shared-scene {
+    position: relative;
+    min-height: 100vh;
+    padding: 80px 8%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.shared-title {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.shared-title span {
+    font-size: 15px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #315f91;
+}
+
+.shared-title h2 {
+    margin: 8px 0;
+    font-size: 42px;
+    color: #174d80;
+    font-weight: 700;
+}
+
+.shared-title p {
+    margin-top: 8px;
+    color: #55718d;
+    font-size: 15px;
+}
+
+/* GRID */
+
+.shared-grid {
+    width: 100%;
+    max-width: 950px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 22px;
+}
+
+/* CARDS */
+
+.shared-item {
+    position: relative;
+    min-height: 190px;
+    padding: 25px 20px;
+    text-align: center;
+
+    background: rgba(255, 255, 255, 0.72);
+    border: 2px dashed #4d78a3;
+
+    box-shadow: 6px 7px 0 rgba(49, 95, 145, 0.12);
+
+    transform: rotate(-1deg);
+    transition: all 0.35s ease;
+}
+
+/* make every other card slightly tilted */
+
+.shared-item:nth-child(2) {
+    transform: rotate(1.5deg);
+}
+
+.shared-item:nth-child(3) {
+    transform: rotate(-2deg);
+}
+
+.shared-item:nth-child(4) {
+    transform: rotate(1deg);
+}
+
+.shared-item:nth-child(5) {
+    transform: rotate(-1.5deg);
+}
+
+.shared-item:nth-child(6) {
+    transform: rotate(2deg);
+}
+
+/* HOVER */
+
+.shared-item:hover {
+    transform: translateY(-10px) rotate(0deg) scale(1.03);
+    box-shadow: 10px 14px 0 rgba(49, 95, 145, 0.18);
+    background: rgba(255, 255, 255, 0.95);
+}
+
+/* ICON */
+
+.shared-icon {
+    font-size: 38px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.shared-item:hover .shared-icon {
+    transform: scale(1.2) rotate(-5deg);
+}
+
+/* TEXT */
+
+.shared-item h3 {
+    margin: 5px 0 10px;
+    color: #174d80;
+    font-size: 20px;
+}
+
+.shared-item p {
+    margin: 0;
+    color: #607891;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* SIDE WORDS */
+
+.shared-left {
+    left: 7%;
+    top: 45%;
+    transform: rotate(-12deg);
+}
+
+.shared-right {
+    right: 7%;
+    top: 48%;
+    transform: rotate(12deg);
+}
+
+/* BUTTON */
+
+.shared-scene .next {
+    margin-top: 35px;
+}
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+    .shared-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .shared-title h2 {
+        font-size: 32px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .shared-grid {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+    }
+
+    .shared-scene {
+        padding: 60px 20px;
+    }
+
+    .shared-left,
+    .shared-right {
+        display: none;
+    }
+
+}
+.letter-photo {
+    width: 220px;
+    height: 220px;
+    object-fit: cover;
+    display: block;
+    margin: 20px auto;
+    border: 6px solid white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+    transform: rotate(-2deg);
+}
+/* ===== FIX ALL PHOTOS ===== */
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Photo inside the letter */
+.letter-photo {
+    width: 180px !important;
+    height: 180px !important;
+    max-width: 180px !important;
+    object-fit: cover;
+    display: block;
+    margin: 18px auto;
+    border: 5px solid white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transform: rotate(-2deg);
+}
+
+/* Photos inside scrapbook scenes */
+.scene img {
+    max-width: 260px !important;
+    max-height: 260px !important;
+    width: auto;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Photo opened inside the popup */
+.memory-photo {
+    width: 260px !important;
+    height: 260px !important;
+    max-width: 260px !important;
+    object-fit: cover;
+    display: block;
+    margin: 15px auto;
+    border-radius: 12px;
+}
+/* =========================
+   MEMORY POPUP
+========================= */
+
+.memory-popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+
+    background: rgba(20, 50, 75, 0.45);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.popup-box {
+    position: relative;
+
+    width: min(500px, 90vw);
+    max-height: 85vh;
+
+    overflow-y: auto;
+
+    background: #f8fbff;
+    border: 3px dashed #315f82;
+
+    padding: 35px 30px;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+
+    animation: popupOpen 0.35s ease;
+}
+
+@keyframes popupOpen {
+
+    from {
+        opacity: 0;
+        transform: scale(0.8) rotate(-2deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+
+}
+
+.close-popup {
+    position: absolute;
+
+    top: 10px;
+    right: 15px;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #315f82;
+    color: white;
+
+    font-size: 25px;
+
+    cursor: pointer;
+
+    z-index: 5;
+}
+
+.close-popup:hover {
+    transform: rotate(90deg);
+}
+
+.popup-content {
+    display: none;
+    text-align: center;
+}
+
+.popup-content.active {
+    display: block;
+}
+
+.popup-content h2 {
+    margin-bottom: 20px;
+}
+
+.popup-content p {
+    margin-top: 15px;
+}
+
+.popup-photo {
+    display: block;
+
+    width: 280px;
+    height: 280px;
+
+    max-width: 100%;
+
+    object-fit: cover;
+
+    margin: 15px auto;
+
+    border: 6px solid white;
+
+    box-shadow: 0 8px 20px rgba(0,0,0,0.18);
+}
+/* =========================
+   MEMORY POPUP
+========================= */
+
+.memory-popup {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+
+    background: rgba(20, 50, 75, 0.55);
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 20px;
+}
+
+.popup-box {
+    position: relative;
+
+    width: 450px;
+    max-width: 90%;
+
+    max-height: 85vh;
+    overflow-y: auto;
+
+    background: #f8fbff;
+
+    padding: 35px;
+
+    border: 3px dashed #315f82;
+
+    box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+}
+
+
+/* THIS IS VERY IMPORTANT */
+
+.popup-content {
+    display: none !important;
+    text-align: center;
+}
+
+
+/* ONLY THE SELECTED CARD APPEARS */
+
+.popup-content.active {
+    display: block !important;
+}
+
+
+.close-popup {
+    position: absolute;
+
+    top: 10px;
+    right: 12px;
+
+    width: 35px;
+    height: 35px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #315f82;
+    color: white;
+
+    font-size: 24px;
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+
+.popup-photo {
+    width: 250px;
+    height: 250px;
+
+    max-width: 100%;
+
+    object-fit: cover;
+
+    display: block;
+
+    margin: 20px auto;
+
+    border: 5px solid white;
+
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+/* =========================
+   FIX OPEN ENVELOPE / LETTER
+========================= */
+
+.envelope-scene {
+    overflow: visible !important;
+}
+
+.envelope {
+    overflow: visible !important;
+}
+
+.letter {
+    position: relative;
+    z-index: 20;
+    max-width: 90vw;
+    max-height: 75vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+/* keep the letter photo small */
+.letter-photo {
+    width: 120px !important;
+    height: 120px !important;
+    max-width: 120px !important;
+    object-fit: cover;
+    display: block;
+    margin: 15px auto;
+}
+
+/* make sure the whole letter can be seen */
+.letter p,
+.letter h2 {
+    max-width: 100%;
+    overflow-wrap: break-word;
+}
